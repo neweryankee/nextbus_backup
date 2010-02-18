@@ -1,0 +1,21 @@
+--- 
+dependencies: 
+- mocha: = 0.9.8
+- ruby-debug: = 0.10.3
+specs: 
+- linecache: 
+    version: "0.43"
+- ruby-debug-base: 
+    version: 0.10.3
+- rake: 
+    version: 0.8.7
+- mocha: 
+    version: 0.9.8
+- columnize: 
+    version: 0.3.1
+- ruby-debug: 
+    version: 0.10.3
+hash: 82bbede2178c9651613fd83b7e5a17045de21c88
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
