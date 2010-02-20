@@ -13,6 +13,10 @@ class TestPrediction < Test::Unit::TestCase
     assert_attr_accessor @prediction1, :departure
   end
 
+  def test_stop_attr
+    assert_attr_accessor @prediction1, :stop
+  end
+
   def test_instantiated_with_attrs
     attrs = {:time => Time.now, :departure => false}
     assert_instantiated_with_attrs Nextbus::Prediction, attrs
