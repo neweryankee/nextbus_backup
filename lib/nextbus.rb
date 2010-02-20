@@ -9,6 +9,7 @@ rescue LoadError
 end
 
 # Your application requires come here
+require 'instantiate_with_attrs'
 dir = File.join(File.dirname(__FILE__), 'nextbus')
 $LOAD_PATH.unshift(dir)
 Dir[File.join(dir, "*.rb")].each {|file| require File.basename(file) }
