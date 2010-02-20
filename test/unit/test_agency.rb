@@ -19,4 +19,9 @@ class TestAgency < Test::Unit::TestCase
     assert_attr_accessor @agency1, :region_title
   end
 
+  def test_instantiated_with_attrs
+    attrs = {:tag => 'my tag', :title => 'my title', :short_title => 'my short title', :region_title => 'my region title'}
+    assert_instantiated_with_attrs Nextbus::Agency, attrs
+  end
+
 end

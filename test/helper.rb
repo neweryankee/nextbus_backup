@@ -20,6 +20,11 @@ require 'nextbus'
 
 class Test::Unit::TestCase
 
+  def assert_instantiated_with_attrs(klass, attrs={})
+    object = klass.new(attrs)
+    attrs.each {|name, value| assert_equal value, object.send(name) }
+  end
+
   def assert_attr_accessor(object, attr_name, expected_value=nil, new_value='some value')
     assert_attr_reader(object, attr_name, expected_value)
     assert_attr_writer(object, attr_name, expected_value)

@@ -19,4 +19,9 @@ class TestReport < Test::Unit::TestCase
     assert_attr_accessor @report1, :time
   end
 
+  def test_instantiated_with_attrs
+    attrs = {:lat => 'my lat', :lon => 'my lon', :heading => 'my heading', :time => Time.now}
+    assert_instantiated_with_attrs Nextbus::Report, attrs
+  end
+
 end

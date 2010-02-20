@@ -16,4 +16,9 @@ class TestDirection < Test::Unit::TestCase
     assert_attr_accessor @direction1, :name
   end
 
+  def test_instantiated_with_attrs
+    attrs = {:tag => 'my tag', :title => 'my title', :name => 'my name'}
+    assert_instantiated_with_attrs Nextbus::Direction, attrs
+  end
+
 end

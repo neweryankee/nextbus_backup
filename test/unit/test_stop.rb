@@ -22,4 +22,9 @@ class TestStop < Test::Unit::TestCase
     assert_attr_accessor @stop1, :id
   end
 
+  def test_instantiated_with_attrs
+    attrs = {:tag => 'my tag', :title => 'my title', :lat => 'my lat', :lon => 'my lon', :id => 'my id'}
+    assert_instantiated_with_attrs Nextbus::Stop, attrs
+  end
+
 end
