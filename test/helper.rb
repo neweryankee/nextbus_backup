@@ -20,6 +20,31 @@ require 'nextbus'
 
 class Test::Unit::TestCase
 
+  def setup
+    response = Net::HTTPOK.new("1.1", 200, "Content for you")
+    response.stubs(:body).returns("")
+    http_request = HTTParty::Request.new(Net::HTTP::Get, 'http://localhost', :format => :xml)
+    http_request.stubs(:perform_actual_request).returns(response)
+    HTTParty::Request.stubs(:new).returns(http_request)
+  end
+
+  def file_fixture(filename)
+    open(File.join(File.dirname(__FILE__), 'fixtures', "#{filename.to_s}")).read
+  end
+
+  def expect_response(filename, path=nil, method=nil)
+    format = filename.split('.').last.intern
+    data = file_fixture(filename)
+
+    response = Net::HTTPOK.new("1.1", 200, "Content for you")
+    response.stubs(:body).returns(data)
+
+    http_request = HTTParty::Request.new(Net::HTTP::Get, 'http://localhost', :format => format)
+    http_request.stubs(:perform_actual_request).returns(response)
+
+    HTTParty::Request.expects(:new).with{|*args| (path.nil? || args[1] =~ path) && (method.nil? || args.first == method) }.returns(http_request)
+  end
+
   def assert_instantiated_with_attrs(klass, attrs={})
     object = klass.new(attrs)
     attrs.each {|name, value| assert_equal value, object.send(name) }
