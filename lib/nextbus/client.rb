@@ -1,5 +1,10 @@
 require 'singleton'
 module Nextbus
+
+  def self.client
+    Nextbus::Client.instance
+  end
+
   class Client
 
     include Singleton

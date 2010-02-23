@@ -7,6 +7,10 @@ class TestClient < Test::Unit::TestCase
     @client = Nextbus::Client.instance
   end
 
+  def test_client
+    assert_equal @client, Nextbus.client
+  end
+
   def test_agencies
     agency_title1 = 'MBTA'
     agency_title2 = 'San Francisco Muni'
