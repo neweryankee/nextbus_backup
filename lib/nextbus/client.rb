@@ -32,7 +32,7 @@ module Nextbus
       response.predictions.direction.prediction
     end
 
-    def locations(agency_id, route_id, time)
+    def vehicles(agency_id, route_id, time=Time.now)
       response = self.class.do_request("vehicleLocations", {"a" => agency_id, "r" => route_id, "t" => time.to_i.to_s})
       response.vehicle
     end

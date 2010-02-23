@@ -62,7 +62,7 @@ class TestClient < Test::Unit::TestCase
     assert_equal 5, predictions.length
   end
 
-  def test_locations
+  def test_vehicles
     vehicle_heading1 = '265'
     vehicle_heading2 = '227'
     agency_id        = 'abc'
@@ -70,11 +70,11 @@ class TestClient < Test::Unit::TestCase
     time             = Time.parse('2010/01/31 12:30:00EDT')
     epoch_time       = time.to_i.to_s
     expect_response('vehicle_locations.xml', /#{agency_id}.+#{route_id}.+#{epoch_time}/, Net::HTTP::Get)
-    locations = @client.locations(agency_id, route_id, time)
-    assert locations.is_a?(Array)
-    assert_equal vehicle_heading1, locations[0].heading
-    assert_equal vehicle_heading2, locations[1].heading
-    assert_equal 7, locations.length
+    vehicles = @client.vehicles(agency_id, route_id, time)
+    assert vehicles.is_a?(Array)
+    assert_equal vehicle_heading1, vehicles[0].heading
+    assert_equal vehicle_heading2, vehicles[1].heading
+    assert_equal 7, vehicles.length
   end
 
 end
