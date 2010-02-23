@@ -42,6 +42,11 @@ module Nextbus
       response.route.direction
     end
 
+    def stops(agency_id, route_id, direction_id)
+      response = self.class.do_request("routeConfig", {"a" => agency_id, "r" => route_id})
+      response.route.direction.detect{|direction| direction.tag == direction_id }.stop
+    end
+
   protected
 
     def self.do_request(resource, params)  

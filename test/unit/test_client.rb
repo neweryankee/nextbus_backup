@@ -89,4 +89,19 @@ class TestClient < Test::Unit::TestCase
     assert_equal direction_title2, directions[1].title
     assert_equal 2, directions.length
   end
+
+  def test_stops
+    stop_tag1     = '23391'
+    stop_tag2     = '173'
+    agency_id     = 'abc'
+    route_id      = '123'
+    direction_id  = 'out'
+    expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
+    stops = @client.stops(agency_id, route_id, direction_id)
+    assert stops.is_a?(Array)
+    assert_equal stop_tag1, stops[0].tag
+    assert_equal stop_tag2, stops[1].tag
+    assert_equal 32, stops.length
+  end
+
 end
