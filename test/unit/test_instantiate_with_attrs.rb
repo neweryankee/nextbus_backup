@@ -23,7 +23,7 @@ class TestInstantiateWithAttrs < Test::Unit::TestCase
 
   def test_instantiated_with_invalid_attr
     attrs = {:wrong => 'boom'}
-    assert_raise NoMethodError do
+    assert_nothing_raised do
       Testing__::Foo.new attrs
     end
   end
