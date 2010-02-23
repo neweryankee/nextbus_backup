@@ -1,5 +1,6 @@
 --- 
 dependencies: 
+- hashie: = 0.1.8
 - mocha: = 0.9.8
 - ruby-debug: = 0.10.3
 specs: 
@@ -7,6 +8,8 @@ specs:
     version: "0.43"
 - ruby-debug-base: 
     version: 0.10.3
+- hashie: 
+    version: 0.1.8
 - rake: 
     version: 0.8.7
 - mocha: 
@@ -15,7 +18,7 @@ specs:
     version: 0.3.1
 - ruby-debug: 
     version: 0.10.3
-hash: 82bbede2178c9651613fd83b7e5a17045de21c88
+hash: b84316e523c8beefb9122c875a2626419f21ab94
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
