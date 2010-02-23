@@ -37,6 +37,11 @@ module Nextbus
       response.vehicle
     end
 
+    def directions(agency_id, route_id)
+      response = self.class.do_request("routeConfig", {"a" => agency_id, "r" => route_id})
+      response.route.direction
+    end
+
   protected
 
     def self.do_request(resource, params)  

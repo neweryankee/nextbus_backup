@@ -77,4 +77,16 @@ class TestClient < Test::Unit::TestCase
     assert_equal 7, vehicles.length
   end
 
+  def test_directions
+    direction_title1 = 'Outbound'
+    direction_title2 = 'Inbound'
+    agency_id        = 'abc'
+    route_id         = '123'
+    expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
+    directions = @client.directions(agency_id, route_id)
+    assert directions.is_a?(Array)
+    assert_equal direction_title1, directions[0].title
+    assert_equal direction_title2, directions[1].title
+    assert_equal 2, directions.length
+  end
 end
